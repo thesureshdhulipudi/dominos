@@ -1,0 +1,45 @@
+# React
+node_modules
+coverage
+build
+/.tmp
+generated
+
+# Maven
+target
+.flattened-pom.xml
+${maven.multiModuleProjectDirectory}
+
+# Sonar
+.sonarqube
+
+# IDEs
+.idea
+*.iml
+.settings
+.classpath
+.project
+.factorypath
+.vscode
+.vs
+.jpb
+.metadata
+
+# Module-specific
+/BiopUserInterface/dist
+/Audit Trail/packages
+/Audit Trail/AuditTrailSelfHost/obj
+/Audit Trail/AuditTrailSelfHost/bin
+/BiopUserInterface/*.tgz
+/platform/translations/*.log
+/platform/translations/logs
+/Reporting Management/deployment/dependencies/BiopReport
+
+#Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/versions
+/.pnp.cjs
+/.pnp.loader.mjs

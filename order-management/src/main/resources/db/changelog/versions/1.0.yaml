@@ -1,0 +1,316 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-user
+      author: suresh
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_user_table_id
+              - column:
+                  name: user_id
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    uniqueConstraintName: unique_user_user_id
+              - column:
+                  name: user_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_address
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create-table-main-menu
+      author: suresh
+      changes:
+        - createTable:
+            tableName: main_menu
+            columns:
+              - column:
+                  name: main_menu_id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: main_menu_code
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    uniqueConstraintName: unique_main_menu_main_menu_code
+              - column:
+                  name: main_menu_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: main_menu_desc
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_main_menu_available
+                  type: boolean
+                  defaultValueBoolean: true
+                  valueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_main_menu_veg
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create-table-sub_menu
+      author: suresh
+      changes:
+        - createTable:
+            tableName: sub_menu
+            columns:
+              - column:
+                  name: sub_menu_id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: sub_menu_code
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    uniqueConstraintName: unique_sub_menu_sub_menu_code
+              - column:
+                  name: sub_menu_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sub_menu_desc
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_sub_menu_available
+                  type: boolean
+                  defaultValueBoolean: true
+                  valueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_sub_menu_veg
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create-table-items
+      author: suresh
+      changes:
+        - createTable:
+            tableName: items
+            columns:
+              - column:
+                  name: item_id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: item_code
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    uniqueConstraintName: unique_item_item_code
+              - column:
+                  name: item_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: item_desc
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_item_available
+                  type: boolean
+                  defaultValueBoolean: true
+                  valueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_item_veg
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create_table_mainmenu_submenu_map
+      author: Suresh
+      changes:
+        - createTable:
+            tableName: mainmenu_submenu_map
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_main_menu_map
+                  name: main_menu_id
+                  type: bigint
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_main_menu_map
+                  name: sub_menu_id
+                  type: bigint
+  - changeSet:
+      id: FK_mainmenu_submenu_map_main_menu_id
+      author: suresh
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: main_menu_id
+            baseTableName: mainmenu_submenu_map
+            constraintName: FK_mainmenu_submenu_map_main_menu_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: main_menu_id
+            referencedTableName: main_menu
+            validate: true
+  - changeSet:
+      id: FK_mainmenu_submenu_map_sub_menu_id
+      author: suresh
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: sub_menu_id
+            baseTableName: mainmenu_submenu_map
+            constraintName: FK_mainmenu_submenu_map_sub_menu_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: sub_menu_id
+            referencedTableName: sub_menu
+            validate: true
+  - changeSet:
+      id: create_table_submenu_items_map
+      author: Suresh
+      changes:
+        - createTable:
+            tableName: submenu_items_map
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_submenu_items_map
+                  name: sub_menu_id
+                  type: bigint
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: PK_submenu_items_map
+                  name: item_id
+                  type: bigint
+  - changeSet:
+      id: FK_submenu_items_map_sub_menu_id
+      author: suresh
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: sub_menu_id
+            baseTableName: submenu_items_map
+            constraintName: FK_submenu_items_map_sub_menu_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: sub_menu_id
+            referencedTableName: sub_menu
+            validate: true
+  - changeSet:
+      id: FK_submenu_items_map_item_id
+      author: suresh
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: item_id
+            baseTableName: submenu_items_map
+            constraintName: FK_submenu_items_map_item_id
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: item_id
+            referencedTableName: items
+            validate: true
+  - changeSet:
+      id: create-table-order
+      author: suresh
+      changes:
+        - createTable:
+            tableName: order
+            columns:
+              - column:
+                  name: order_id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: item_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: item_quantity
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: order_status
+                  type: varchar(225)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ordered_date_time
+                  type: datetime2
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: create_table_order_itmes_map
+      author: Suresh
+      changes:
+        - createTable:
+            tableName: order_itmes_map
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: order_id
+                  type: bigint
+              - column:
+                  constraints:
+                    nullable: false
+                  name: item_id
+                  type: bigint

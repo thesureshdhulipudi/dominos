@@ -1,0 +1,23 @@
+spring:
+   application:
+      name: dominos-order-management
+   main:
+      allow-circular-references: true
+   profiles:
+      active:  '@spring.profiles.active@'
+      include: platform,module,system-specific
+   cloud:
+      consul:
+         host: localhost
+         port: 8500
+         enabled: true
+         discovery:
+            instance-id: ${spring.application.name}
+            health-check-path: ${server.servlet.context-path}/actuator/health
+            health-check-interval: 15s
+            include-hostname-in-instance-id: true
+            scheme: http
+         config:
+            format: YAML
+            fail-fast: false
+            defaultContext: platform

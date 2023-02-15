@@ -1,0 +1,52 @@
+user
+	id
+	userid
+	name
+	address
+
+main_menu
+	main_menu_id
+	main_menu_code
+	main_menu_name
+	main_menu_desc
+	is_main_menu_available
+	is_main_menu_veg
+
+sub_menu
+	sub_menu_id
+	sub_menu_name
+	sub_menu_desc
+	is_sub_menu_available
+	is_sub_menu_veg
+
+items
+	item_id
+	item_name
+	item_desc
+	is_item_available
+	is_item_veg
+
+mainmenu_submenu_mapping
+	main_menu_id
+	sub_menu_id
+
+submenu_items_mapping
+	sub_menu_id
+	item_id
+
+order
+	order_id
+	user_id
+	item_id
+	item_quantity
+	order_status
+	ordered_time
+
+order_itmes_mapping
+	order_id
+	item_id
+
+
+
+
+

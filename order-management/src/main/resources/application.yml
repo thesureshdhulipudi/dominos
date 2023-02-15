@@ -1,0 +1,30 @@
+server:
+  port: 20021
+  servlet:
+    context-path: /order-mgmt
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    enabled: true
+#  datasource:
+#    url: jdbc:sqlserver://localhost:1433;databaseName=Dominos
+#    username: dominos
+#    password: Service$App1@
+#    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#  jpa:
+#    hibernate:
+#      dialect: org.hibernate.dialect.SQLServer2012Dialect
+#  properties:
+#    hibernate:
+#      dialect: org.hibernate.dialect.SQLServer2012Dialect
+#database:
+#  name: Dominos
+#  userName: dominos
+#  password: Service$App1@
+
+springdoc:
+  api-docs:
+    path: /
+
+order-mgmt-properties:
+  name: suresh
