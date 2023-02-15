@@ -9,7 +9,7 @@ spring:
 #  datasource:
 #    url: jdbc:sqlserver://localhost:1433;databaseName=Dominos
 #    username: dominos
-#    password: Service$App1@
+#    password: password
 #    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
 #  jpa:
 #    hibernate:
@@ -20,7 +20,7 @@ spring:
 #database:
 #  name: Dominos
 #  userName: dominos
-#  password: Service$App1@
+#  password: password
 
 springdoc:
   api-docs:
